@@ -80,53 +80,21 @@ function PlayMusic_mobile(event) {
   musicPlayer_mobile.onplay = () => {
     targetTag_mobile.classList.remove("pauseMusic_mobile");
     event.target.previousElementSibling.style =
-      "box-shadow: white 5px 5px 50px;";
+      "box-shadow: white 0px 0px 50px;";
   };
   musicPlayer_mobile.onpause = () => {
     targetTag_mobile.classList.add("pauseMusic_mobile");
 
-    //
-    //
-    //!function hightlight_start() {
-    //   setTimeout(() => {
-    //event.target.previousElementSibling.style.transition = "box-shadow 0.5s ease-in-out"
-    //  event.target.previousElementSibling.style.boxShadow = "white 5px 5px 20px"
-    //    hightlight()
-    //  }, 1000);
-    //}()
-    hightlight();
-
-    function hightlight() {
-      if (musicPlayer_mobile.onpause) {
-        setTimeout(() => {
-          event.target.previousElementSibling.style.transition =
-            "box-shadow 0.5s ease-in-out";
-          event.target.previousElementSibling.style.boxShadow =
-            "white 5px 5px 50px";
-          hightlight_c();
-        }, 800);
-      } else if (musicPlayer_mobile.onplay) {
-        event.target.previousElementSibling.style.boxShadow = "";
-      }
-
-      function hightlight_c() {
-        if (musicPlayer_mobile.onpause) {
-          setTimeout(() => {
-            event.target.previousElementSibling.style.transition =
-              "box-shadow 0.5s ease-in-out";
-            event.target.previousElementSibling.style.boxShadow =
-              "white 5px 5px 30px";
-            hightlight();
-          }, 800);
-        } else if (musicPlayer_mobile.onplay) {
-          event.target.previousElementSibling.style.boxShadow = "";
-        }
-      }
-
-      //console.log(event.target.previousElementSibling.style = "box-shadow: white 5px 5px 50px;")
-    }
+    setTimeout(() => {
+      event.target.previousElementSibling.style.transition =
+        "box-shadow 0.3s ease-in-out";
+      event.target.previousElementSibling.style.boxShadow =
+        "white 0px 0px 30px";
+      hightlight_c();
+    }, 100);
   };
 }
+
 function slideChangemsic(event) {
   var musicPlayer = document.querySelector("audio");
   musicPlayer.style.transition = "all 0.2s linear";
