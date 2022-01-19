@@ -1,218 +1,240 @@
-body{
-    background-color: #585858;
-}
-a{
-    text-decoration: none;
-    color: black;
-    cursor: pointer;
-}
-*{
-    transition: all 0.45s ease-in-out;
-    outline: none;
-    -webkit-tap-highlight-color: transparent;
-    user-select: none;
-    -webkit-user-drag: none;
-}
-
-
-h1{
-    cursor: default;
-    color: white;
-    padding: 10px;
-    box-shadow: wheat 0 0 10px;
-    border-radius: 10px;
+@keyframes highlight-color {
+  0% {
+    color: red;
+    box-shadow: red 0 0 30px;
+  }
+  40% {
+    color: rgb(7, 106, 255);
+    box-shadow: rgb(7, 106, 255) 0 0 40px;
+  }
+  80% {
+    color: yellow;
+    box-shadow: yellow 0 0 50px;
+  }
+  100% {
+    color: #fd7a00;
+    box-shadow: #fd7a00 0 0 70px;
+  }
 }
 
-main{
-    background-color: rgb(54, 54, 54);
-    display: flex;
-    align-items: center;
-    margin-top: 200px;
-    margin-left: 20px;
-    margin-right: 20px;
+body {
+  background-color: #585858;
+}
+a {
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+}
+* {
+  transition: all 0.45s ease-in-out;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+h1 {
+  cursor: default;
+  color: white;
+  padding: 10px;
+  box-shadow: wheat 0 0 10px;
+  border-radius: 10px;
+}
+
+main {
+  background-color: rgb(54, 54, 54);
+  display: flex;
+  align-items: center;
+  margin-top: 200px;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 20px;
+  overflow: auto;
+  border-radius: 7px;
+  flex-direction: row;
+  box-shadow: gold 0 0 20px;
+}
+main::-webkit-scrollbar {
+  width: 6px;
+  background-color: rgb(155, 155, 155);
+  border-radius: 10px;
+  padding: 20px;
+}
+main::-webkit-scrollbar-thumb {
+  background-color: #000000;
+  border-radius: 50px;
+}
+main::-webkit-scrollbar-track {
+  /* box-shadow: inset 0 0 6px hsl(207, 100%, 50%); */
+  height: 6px;
+  width: 6px;
+}
+main::-webkit-scrollbar-corner {
+  background-color: hsl(0, 0%, 64%);
+}
+main::-webkit-scrollbar-button {
+  background-color: #777777;
+  color: white;
+  border: wheat 1px solid;
+}
+
+.PlayLists {
+  position: relative;
+  transition: all 0.3s ease-in-out;
+  -webkit-tap-highlight-color: transparent;
+  margin: auto;
+  margin-left: 30px;
+}
+.PlayLists:hover {
+  transition: all 0.5s ease-in-out;
+  box-shadow: white 5px 5px 50px;
+  transform: scale(1.5, 1.5);
+  -webkit-transform: scale(1.1, 1.1);
+}
+.PlaySdw {
+  box-shadow: white 5px 5px 50px;
+}
+.iconPlay {
+  transition: all 0.3s ease-in-out;
+  display: block;
+  background-color: red;
+  padding: 5px;
+  text-align: center;
+  margin: auto;
+  width: 45px;
+  border-radius: 8px;
+  position: absolute;
+  color: white;
+  cursor: pointer;
+  bottom: 60px;
+  left: 50px;
+  opacity: 0%;
+}
+.PlayLists:hover .iconPlay {
+  transition: all 0.3s ease-in-out;
+  opacity: 100%;
+}
+
+audio {
+  display: block;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 100px;
+  box-shadow: #49d2ff 0 0 30px;
+  border-radius: 25px;
+  position: relative;
+  top: 50px;
+  opacity: 0%;
+}
+
+.musicSelected {
+  opacity: 90%;
+}
+.pauseMusic {
+  opacity: 40%;
+}
+
+/*  The Styles of The Phone ///////////////////////////////////////////////// */
+
+#container {
+  max-width: 1000px;
+  background-color: rgb(71, 71, 71);
+  margin: auto;
+  padding: 30px;
+  margin-top: 50px;
+  border-radius: 20px;
+  transition: all 0.5s ease-in-out;
+}
+#slideContainer {
+  display: flex;
+  background-color: #2c2b2b;
+  margin: auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+}
+.slide img {
+  width: 250px;
+  height: auto;
+  transition: all 0.5s ease-in-out;
+  border-radius: 20%;
+  box-shadow: white 0px 0px 0px;
+}
+.buttons {
+  display: block;
+  background-color: burlywood;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  margin: 5px;
+  padding: 5px;
+  position: relative;
+  border-radius: 500px;
+  font-size: 35px;
+  transition: all 0.5s ease-in-out;
+  bottom: 280px;
+}
+
+@media screen and (min-width: 600px) {
+  #container {
+    display: none;
+  }
+  #main_mobile {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  main {
+    display: none;
+  }
+  .buttons {
+    background-color: tomato;
+  }
+  audio {
+    bottom: 150px;
+  }
+  #next {
+    margin-left: auto;
+    margin-right: -30px;
+  }
+  #previous {
+    margin-right: auto;
+    margin-top: -60px;
+    margin-left: -30px;
+  }
+  .slide img {
+    width: 200px;
+    height: auto;
+    transition: all 0.8s ease-in-out;
+    animation-name: highlight-color;
+    /* animation: infinite 1s 300ms alternate; */
+  }
+  #main_mobile {
+    width: 200px;
     padding: 20px;
+    background-color: rgb(54, 54, 54);
+    align-items: center;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    padding: 50px;
     overflow: auto;
     border-radius: 7px;
     flex-direction: row;
     box-shadow: gold 0 0 20px;
-}
-main::-webkit-scrollbar{
-    width: 6px;
-    background-color: rgb(155, 155, 155);
-    border-radius: 10px;
-    padding: 20px;
-}
-main::-webkit-scrollbar-thumb{
-    background-color: #000000;
-    border-radius: 50px;
-}
-main::-webkit-scrollbar-track{
-    /* box-shadow: inset 0 0 6px hsl(207, 100%, 50%); */
-    height: 6px;
-    width: 6px;
-}
-main::-webkit-scrollbar-corner{
-    background-color: hsl(0, 0%, 64%);
-}
-main::-webkit-scrollbar-button{
-    background-color: #777777;
-    color: white;
-    border: wheat 1px solid;
-}
-
-.PlayLists{
-    position: relative; 
+  }
+  .PlayLists_mobile {
+    width: 200px;
     transition: all 0.3s ease-in-out;
     -webkit-tap-highlight-color: transparent;
     margin: auto;
-    margin-left: 30px;
-}
-.PlayLists:hover{
-    transition: all 0.5s ease-in-out;
-    box-shadow: white 5px 5px 50px;
-    transform: scale(1.5,1.5);
-    -webkit-transform: scale(1.1,1.1);
-}
-.PlaySdw{
-    box-shadow: white 5px 5px 50px;
-}
-.iconPlay{
-    transition: all 0.3s ease-in-out;
-    display: block;
-    background-color: red;
-    padding: 5px;
-    text-align: center;
-    margin: auto;
-    width: 45px;
-    border-radius: 8px;
-    position: absolute;
-    color: white;
-    cursor: pointer;
-    bottom: 60px;
-    left: 50px;
-    opacity: 0%;
-}
-.PlayLists:hover .iconPlay{
-    transition: all 0.3s ease-in-out;
-    opacity: 100%;
-}
-
-audio{
-    display: block;
-    margin: auto;
-    margin-top: 20px;
-    margin-bottom: 100px;
-    box-shadow: #49d2ff 0 0 30px;
-    border-radius: 25px;
-    position: relative;
-    top: 50px;
-    opacity: 0%;
-}
-
-.musicSelected{
-    opacity: 90%;
-}
-.pauseMusic{
-    opacity: 40%;
-}
-
-
-/*  The Styles of The Phone ///////////////////////////////////////////////// */
-
-#container{
-    max-width: 1000px;
-    background-color: rgb(71, 71, 71);
-    margin: auto;
-    padding: 30px;
-    margin-top: 50px;
-    border-radius: 20px;
-    transition: all 0.5s ease-in-out;
-}
-#slideContainer{
-    display: flex;
-    background-color: #2c2b2b;
-    margin: auto;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border-radius: 20px;
-}
-.slide img{
-    width: 250px;
-    height: auto;
-    transition: all 0.5s ease-in-out;
-    border-radius: 20%;
-}
-.buttons{
-    display: block;
-    background-color: burlywood;
-    width: 50px;
-    height: 50px;
-    text-align: center;
-    margin: 5px;
-    padding: 5px;
-    position: relative;
-    border-radius: 500px;
-    font-size: 35px;
-    transition: all 0.5s ease-in-out;
-    bottom: 280px;
-}
-
-@media screen and (min-width:600px) {
-    #container{
-        display: none;
-    }
-    #main_mobile{
-        display: none;
-    }
-}
-
-@media screen and (max-width:600px) {
-    main{
-        display: none;
-    }
-    .buttons{
-        background-color: tomato;
-    }
-    audio{
-        bottom: 150px;
-    }
-    #next{
-        margin-left: auto;
-    }
-    #previous{
-        margin-right: auto;
-        margin-top: -60px;
-    }
-    .slide img{
-        width: 200px;
-        height: auto;
-        transition: all 0.5s ease-in-out;
-    }
-    #main_mobile{
-        width: 200px;
-        padding: 20px;
-        background-color: rgb(54, 54, 54);
-        align-items: center;
-        margin-top: 100px;
-        margin-bottom: 100px;
-        padding: 50px;
-        overflow: auto;
-        border-radius: 7px;
-        flex-direction: row;
-        box-shadow: gold 0 0 20px;
-    }
-    .PlayLists_mobile{
-        width: 200px;
-        transition: all 0.3s ease-in-out;
-        -webkit-tap-highlight-color: transparent;
-        margin: auto;
-    }
-    /*.PlayLists_mobile:hover{
+  }
+  /*.PlayLists_mobile:hover{
         transition: all 0.5s ease-in-out;
         box-shadow: white 5px 5px 50px;
     }*/
-    .iconPlay_mobile{
+  .iconPlay_mobile {
     transition: all 0.3s ease-in-out;
     display: flex;
     background-color: red;
@@ -221,6 +243,7 @@ audio{
     margin: auto;
     margin-left: 75px;
     width: 45px;
+    height: 30px;
     border-radius: 8px;
     position: absolute;
     left: auto;
@@ -231,15 +254,15 @@ audio{
     color: white;
     cursor: pointer;
     opacity: 50%;
-    }
-    .PlayLists_mobile:hover{
-        transition: all 0.3s ease-in-out;
-        opacity: 100%;
-    }
+  }
+  .PlayLists_mobile:hover {
+    transition: all 0.3s ease-in-out;
+    opacity: 100%;
+  }
 }
-.musicSelected_mobile{
-    opacity: 90%;
+.musicSelected_mobile {
+  opacity: 90%;
 }
-.pauseMusic_mobile{
-    opacity: 40%;
+.pauseMusic_mobile {
+  opacity: 40%;
 }

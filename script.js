@@ -28,12 +28,17 @@ function PlayMusic(event) {
     Iclass.classList.remove("musicSelected");
     Iclass.classList.remove("pauseMusic");
   }
-  musicPlayer.onplay = () => {
+  musicPlayer.onplay = (e) => {
     targetTag.classList.add("musicSelected");
     targetTag.classList.remove("pauseMusic");
+    musicPlayer.style =
+      "animation: highlight-color infinite 2.5s 300ms alternate; opacity: 100%";
   };
   musicPlayer.onpause = () => {
     targetTag.classList.add("pauseMusic");
+    musicPlayer.style.boxShadow = "white 0 0 30px"
+    musicPlayer.style =
+      "opacity: 100%;animation: highlight-color 1.7s 300ms alternate-reverse;";
   };
 }
 
@@ -48,6 +53,12 @@ var musicPlayer_mobile = document.querySelector("audio");
 musicPlayer_mobile.style.opacity = "0%";
 
 function PlayMusic_mobile(event) {
+  let Albums = document.querySelectorAll(".slide img");
+  for (let x = 0; x < Albums.length; x++) {
+    const alb = Albums[x];
+    alb.style = "box-shadow: white 0px 0px 0px";
+  }
+
   var musicPlayer_mobile = document.querySelector("audio");
   targetTag_mobile = event.target;
   targetClasses_mobile = document.getElementsByClassName(
@@ -76,11 +87,12 @@ function PlayMusic_mobile(event) {
     targetTag_mobile.classList.add("musicSelected_mobile");
     event.target.previousElementSibling.style =
       "box-shadow: white 5px 5px 50px;";
+    musicPlayer_mobile.style.transition = "all 1s ease-in-out";
   }
   musicPlayer_mobile.onplay = () => {
     targetTag_mobile.classList.remove("pauseMusic_mobile");
     event.target.previousElementSibling.style =
-      "box-shadow: white 0px 0px 50px;";
+      "box-shadow: lightBlue 0px 0px 50px; animation: highlight-color infinite 5s 300ms alternate;";
   };
   musicPlayer_mobile.onpause = () => {
     targetTag_mobile.classList.add("pauseMusic_mobile");
@@ -90,14 +102,16 @@ function PlayMusic_mobile(event) {
         "box-shadow 0.3s ease-in-out";
       event.target.previousElementSibling.style.boxShadow =
         "white 0px 0px 30px";
-      hightlight_c();
+      event.target.previousElementSibling.style =
+        "box-shadow: white 0px 0px 50px;";
+      // hightlight_c();
     }, 100);
   };
 }
 
 function slideChangemsic(event) {
-  var musicPlayer = document.querySelector("audio");
-  musicPlayer.style.transition = "all 0.2s linear";
+  var musicPlayer_mobile = document.querySelector("audio");
+  musicPlayer_mobile.style.transition = "all 0.2s linear";
 }
 
 //####################################################################
