@@ -1,6 +1,23 @@
 var musicPlayer = document.querySelector("audio");
 musicPlayer.style.opacity = "0%";
 
+let fileTest = document.querySelector("#testInsertMusic");
+function testfile(e) {
+  var files = e.target.files;
+  var file = files[0];
+  var urlfile = e.target;
+  // console.log(file.name);
+  // console.log(file.size);
+
+  for (let i = 0; i < files.length; i++) {
+    const music = files[i];
+    let audiotest = new Audio();
+    console.log(music);
+    console.log(e.target);
+  }
+  console.log(fileTest.files[1]);
+}
+
 function PlayMusic(event) {
   var musicPlayer = document.querySelector("audio");
   targetTag = event.target;
@@ -36,7 +53,7 @@ function PlayMusic(event) {
   };
   musicPlayer.onpause = () => {
     targetTag.classList.add("pauseMusic");
-    musicPlayer.style.boxShadow = "white 0 0 30px"
+    musicPlayer.style.boxShadow = "white 0 0 30px";
     musicPlayer.style =
       "opacity: 100%;animation: highlight-color 1.7s 300ms alternate-reverse;";
   };
